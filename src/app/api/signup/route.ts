@@ -84,6 +84,12 @@ export async function POST(request: Request) {
         { status: 500 }
       );
     }
+    return Response.json({
+      message:"User Create Succesfully",
+      success:true,
+      Data:User
+    },  { status: 200 })
+    
   } catch (error) {
     console.log("Error in user Registeration: ", error);
     return Response.json({
