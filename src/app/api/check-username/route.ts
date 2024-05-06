@@ -52,7 +52,7 @@ export async function GET(request: Request) {
 
     return Response.json(
       {
-        message: "username is Avilable",
+        message: "is available username",
         success: true,
       },
       { status: 200 }
