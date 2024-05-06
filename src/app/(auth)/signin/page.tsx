@@ -1,70 +1,40 @@
-"use client";
-import { zodResolver } from "@hookform/resolvers/zod";
-import Link from "next/link";
-import { useEffect, useState } from "react";
-import { useForm ,SubmitHandler} from "react-hook-form";
-import { z } from "zod";
-import { useDebounceValue } from "usehooks-ts";
-import { useToast } from "@/components/ui/use-toast";
-import { useRouter } from "next/navigation";
-import { SignUpSchema } from "@/schema/signupSchema";
-import axios, { AxiosError } from "axios";
-import { ApiResponse } from "@/types/APiresponse";
+import { Button } from "@/components/ui/button"
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
 
-const page = () => {
-  const { toast } = useToast();
-  const [username, setUsername] = useState("");
-  const [usernameMessage, setUsernameMessage] = useState("");
-  const [isCheckingUsername, setIsCheckingUsername] = useState(false);
-  const [isSubmiting, setIsSubmiting] = useState(false);
-  const debounceUsername = useDebounceValue(username, 300);
+const LoginForm = () =>  {
+  return (
+    <Card className="w-full max-w-sm">
+      <CardHeader>
+        <CardTitle className="text-2xl">Login</CardTitle>
+        <CardDescription>
+          Enter your email below to login to your account.
+        </CardDescription>
+      </CardHeader>
+      <CardContent className="grid gap-4">
+        <div className="grid gap-2">
+          <Label htmlFor="email">Email</Label>
+          <Input id="email" type="email" placeholder="m@example.com" required />
+        </div>
+        <div className="grid gap-2">
+          <Label htmlFor="password">Password</Label>
+          <Input id="password" type="password" required />
+        </div>
+      </CardContent>
+      <CardFooter>
+        <Button className="w-full">Sign in</Button>
+      </CardFooter>
+    </Card>
+  )
+}
 
-  const router = useRouter();
 
-  const form = useForm({
-    resolver: zodResolver(SignUpSchema),
-    defaultValues: {
-      username: "",
-      email: "",
-      password: "",
-    },
-  });
-
-  useEffect(() => {
-    const checkusername = async () => {
-      if (debounceUsername) {
-        setIsCheckingUsername(true);
-        setUsernameMessage("");
-        try {
-          const response = await axios.get(
-            `/api/check-username?username=${debounceUsername}`
-          );
-
-          console.log(response);
-          setUsernameMessage(response.data.message);
-        } catch (error) {
-          const axiosError = error as AxiosError<ApiResponse>;
-          setUsernameMessage(
-            axiosError.response?.data.message ?? "Error checking in username"
-          );
-        } finally {
-          setIsCheckingUsername(false);
-        }
-      }
-    };
-    checkusername();
-  }, [debounceUsername]);
-
- const onSubmit = async (data:z.infer<typeof SignUpSchema>) =>{
-  setIsSubmiting(true)
-  try {
-    const response = await axios.post(`api/signin`)
-  } catch (error) {
-    
-  }
- }
-
-  return <div>page</div>;
-}; 
-
-export default page;
+export default LoginForm
