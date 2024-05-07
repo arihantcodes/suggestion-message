@@ -1,11 +1,11 @@
 import UserModel from "@/models/User";
 import { connect } from "@/lib/dbconfig";
 
-export async function GET(request: Request) {
+export async function POST(request: Request) {
   await connect();
 
   try {
-    const { username, code } = await request.json();
+    const { username, otp } = await request.json();
 
     const decode = decodeURIComponent(username);
 
@@ -21,7 +21,7 @@ export async function GET(request: Request) {
       );
     }
 
-    const iscodevalid = user.verifycode === code;
+    const iscodevalid = user.verifycode === otp;
     const iscodeExp = new Date(user.verfifycodeexpires) > new Date();
     
 
