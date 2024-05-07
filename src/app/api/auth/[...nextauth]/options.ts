@@ -1,4 +1,4 @@
-import nextAuth, { NextAuthOptions } from "next-auth";
+import { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import bcrypt from "bcryptjs";
 import { connect } from "@/lib/dbconfig";
@@ -10,7 +10,7 @@ export const authOption: NextAuthOptions = {
       id: "credential",
       name: "credentials",
       credentials: {
-        email: { label: "Email", type: "text", placeholder: "jsmith" },
+        email: { label: "Email", type: "text" },
         password: { label: "Password", type: "password" },
       },
       async authorize(credentials: any): Promise<any> {
@@ -70,5 +70,5 @@ export const authOption: NextAuthOptions = {
       return token;
     },
   },
-  secret: process.env.NEXT_AUTH_SEC,
+  secret: process.env.NEXTAUTH_SECRET,
 };
