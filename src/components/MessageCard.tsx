@@ -26,7 +26,7 @@ import { useToast } from "./ui/use-toast";
   
 type MessageCardProp = {
     message:Message;
-    onMessageDelete:(messageId:string)=>void
+    onMessageDelete:(messageid:string)=>void
 }
 const MessageCard = ({message,onMessageDelete}:MessageCardProp) => {
     const {toast} = useToast()
