@@ -28,7 +28,7 @@ type MessageCardProp = {
     message:Message;
     onMessageDelete:(messageid:string)=>void
 }
-const MessageCard = ({message,onMessageDelete}:MessageCardProp) => {
+const page = ({message,onMessageDelete}:MessageCardProp) => {
     const {toast} = useToast()
     const handleDelete =async ()=>{
      const response = await axios.delete(`/api/delete-message/${message._id}`)
@@ -64,4 +64,4 @@ const MessageCard = ({message,onMessageDelete}:MessageCardProp) => {
   );
 };
 
-export default MessageCard;
+export default page;
