@@ -17,6 +17,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useToast } from '@/components/ui/use-toast';
 import { SigninSchema } from '@/schema/signinSchema';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 
 export default function SignInForm() {
   const router = useRouter();
@@ -55,18 +56,22 @@ export default function SignInForm() {
 
     if (result?.url) {
       router.replace('/dashboard');
+      toast({
+        title: "Login Succesfully ✅",
+       
+      });
     }
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-800">
-      <div className="w-full max-w-md p-8 space-y-8 bg-white rounded-lg shadow-md">
-        <div className="text-center">
-          <h1 className="text-4xl font-extrabold tracking-tight lg:text-5xl mb-6">
-            Welcome Back to True Feedback
-          </h1>
-          <p className="mb-4">Sign in to continue your secret conversations</p>
-        </div>
+    <Card className="mx-auto max-w-sm mt-24">
+        <CardHeader>
+          <CardTitle className="text-xl">Sign In</CardTitle>
+          <CardDescription>
+          Enter your email below to login to your account.
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
             <FormField
@@ -74,8 +79,8 @@ export default function SignInForm() {
               control={form.control}
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Email/Username</FormLabel>
-                  <Input {...field} />
+                  <FormLabel>Email</FormLabel>
+                  <Input   placeholder="Email" {...field} />
                   <FormMessage />
                 </FormItem>
               )}
@@ -86,7 +91,7 @@ export default function SignInForm() {
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>Password</FormLabel>
-                  <Input type="password" {...field} />
+                  <Input type="password"   placeholder="Password" {...field} />
                   <FormMessage />
                 </FormItem>
               )}
@@ -95,14 +100,14 @@ export default function SignInForm() {
           </form>
         </Form>
         <div className="text-center mt-4">
-          <p>
-            Not a member yet?{' '}
-            <Link href="/signup" className="text-blue-600 hover:text-blue-800">
-              Sign up
+        <div className="mt-4 text-center text-sm">
+        Don't have an account{" "}
+            <Link href="/signup" className="underline">
+              Sign in
             </Link>
-          </p>
+          </div>
         </div>
-      </div>
-    </div>
+        </CardContent>
+      </Card>
   );
 }

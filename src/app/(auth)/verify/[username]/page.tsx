@@ -23,6 +23,7 @@ import { useToast } from "@/components/ui/use-toast";
 import { useParams, useRouter } from "next/navigation";
 import { verifySchema } from "@/schema/verifySchema";
 import axios from "axios";
+import { Card } from "@/components/ui/card";
 
 const InputOTPForm = () => {
   const router = useRouter();
@@ -58,6 +59,7 @@ const InputOTPForm = () => {
   };
 
   return (
+    <Card className="mx-auto max-w-md p-16 mt-24">
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="w-2/3 space-y-6">
         <FormField
@@ -79,7 +81,7 @@ const InputOTPForm = () => {
                 </InputOTP>
               </FormControl>
               <FormDescription>
-                Please enter the one-time password sent to your phone.
+                Please enter the one-time password sent to your Email.
               </FormDescription>
               <FormMessage />
             </FormItem>
@@ -89,6 +91,7 @@ const InputOTPForm = () => {
         <Button type="submit">Submit</Button>
       </form>
     </Form>
+    </Card>
   );
 };
 
