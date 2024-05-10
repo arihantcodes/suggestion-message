@@ -14,7 +14,7 @@ export async function sendverication(
 
     try {
         await resend.emails.send({
-            from: 'onboarding@ezbilling.tech',
+            from: 'onboarding@suggestion-share.com',
             to: email,
             subject: 'Verification Code for Suggestion Share',
             react: Verification({ username, otp }),
