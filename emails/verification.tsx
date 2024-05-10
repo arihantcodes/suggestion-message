@@ -43,9 +43,9 @@ export default function Verification({ username, otp }: VerificationProps) {
                         </Text>
                     </Row>
                     <Row>
-                        <Text>
+                        <Heading>
                             OTP: {otp}
-                        </Text>
+                        </Heading>
                     </Row>
                     {/* <Row>
                         <Button href="https://example.com/verify">Verify</Button>
