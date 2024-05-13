@@ -24,7 +24,7 @@ import { ApiResponse } from '@/types/APiresponse';
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
 import { messageSchema } from '@/schema/messageSchema';
-
+import Navbar from '@/components/Navbar';
 const specialChar = '||';
 
 const parseStringMessages = (messageString: string): string[] => {
@@ -96,6 +96,8 @@ export default function SendMessage() {
   };
 
   return (
+    <>
+       <Navbar/>
     <div className="container mx-auto my-8 p-6  rounded max-w-4xl">
       <h1 className="text-4xl font-bold mb-6 text-center">
         Public Profile Link
@@ -175,5 +177,6 @@ export default function SendMessage() {
         </Link>
       </div>
     </div>
+    </>
   );
 }
