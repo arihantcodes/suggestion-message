@@ -32,14 +32,11 @@ export async function POST(request: Request) {
     }
 
     const newMessage = { content, createdAt:new Date() };
- 
+    console.log(newMessage)
    user.messages.push(newMessage as Message)
    await user.save()
     return Response.json(
-      {
-        success: true,
-        message: "User Not Found",
-      },
+      { message: 'Message sent successfully', success: true },
       { status: 200 }
     );
   } catch (error) {

@@ -1,4 +1,5 @@
 "use client";
+import dayjs from 'dayjs';
 import {
   Card,
   CardContent,
@@ -38,29 +39,41 @@ const page = ({message,onMessageDelete}:MessageCardProp) => {
      onMessageDelete(message._id)
     }
   return (
-    <Card>
-      <CardHeader>
-        <CardTitle>User Suggestion</CardTitle>
+    <Card className="card-bordered">
+    <CardHeader>
+      <div className="flex justify-between items-center">
+        <CardTitle>{message.content}</CardTitle>
         <AlertDialog>
-      <AlertDialogTrigger asChild>
-        <Button variant="destructive"><X/></Button>
-      </AlertDialogTrigger>
-      <AlertDialogContent>
-        <AlertDialogHeader>
-          <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
-          <AlertDialogDescription>
-            This action cannot be undone. This will permanently delete your
-            account and remove your data from our servers.
-          </AlertDialogDescription>
-        </AlertDialogHeader>
-        <AlertDialogFooter>
-          <AlertDialogCancel>Cancel</AlertDialogCancel>
-          <AlertDialogAction onClick={handleDelete}>Continue</AlertDialogAction>
-        </AlertDialogFooter>
-      </AlertDialogContent>
-    </AlertDialog>
-      </CardHeader>
-    </Card>
+          <AlertDialogTrigger asChild>
+            <Button variant='destructive'>
+              <X className="w-5 h-5" />
+            </Button>
+          </AlertDialogTrigger>
+          <AlertDialogContent>
+            <AlertDialogHeader>
+              <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+              <AlertDialogDescription>
+                This action cannot be undone. This will permanently delete
+                this message.
+              </AlertDialogDescription>
+            </AlertDialogHeader>
+            <AlertDialogFooter>
+              <AlertDialogCancel>
+                Cancel
+              </AlertDialogCancel>
+              <AlertDialogAction onClick={handleDelete}>
+                Continue
+              </AlertDialogAction>
+            </AlertDialogFooter>
+          </AlertDialogContent>
+        </AlertDialog>
+      </div>
+      <div className="text-sm">
+        {dayjs(message.createdAt).format('MMM D, YYYY h:mm A')}
+      </div>
+    </CardHeader>
+    <CardContent></CardContent>
+  </Card>
   );
 };
 
