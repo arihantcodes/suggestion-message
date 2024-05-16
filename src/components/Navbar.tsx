@@ -22,7 +22,7 @@ const page = () => {
               <Button className="md:mr-5" onClick={() =>signOut()}>Logout</Button>
             </>
           ) : (
-           <Link href="/signup">
+           <Link href="/signin">
             <Button className="md:mr-5 ">Login</Button>
            </Link>
           )}
