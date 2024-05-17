@@ -9,13 +9,13 @@ const Footer = () => {
         <p className="">&copy; 2024 Suggestion Share. All rights reserved.</p>
 
         <div className="flex md:justify-end justify-center space-x-4 ">
-          <Link href="">
+          <Link href="https://www.linkedin.com/in/arihantdotcom/">
             <Linkedin />
           </Link>
-          <Link href="">
+          <Link href="https://x.com/Arihantdotcom">
             <Twitter />
           </Link>
-          <Link href="">
+          <Link href="https://x.com/Arihantdotcom">
             <Github />
           </Link>
         </div>
