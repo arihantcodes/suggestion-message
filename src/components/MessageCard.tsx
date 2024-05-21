@@ -53,8 +53,8 @@ const page = ({message,onMessageDelete}:MessageCardProp) => {
             <AlertDialogHeader>
               <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
               <AlertDialogDescription>
-                This action cannot be undone. This will permanently delete
-                this message.
+                This action cannot be undone. This Message will permanently delete
+                
               </AlertDialogDescription>
             </AlertDialogHeader>
             <AlertDialogFooter>
