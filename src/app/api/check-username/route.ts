@@ -61,7 +61,7 @@ export async function GET(request: Request) {
     console.log("Error in cheaking username", error);
     return Response.json(
       {
-        message: "Error in username validation checking",
+        message: "Error in username validation checking plz try again",
         success: false,
       },
       { status: 500 }
